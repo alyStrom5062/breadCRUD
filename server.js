@@ -1,11 +1,16 @@
-// Require DOTENV and create common PORT var.
-require('dotenv').config()
-const PORT = process.env.PORT
-console.log(PORT)
+// Dependencies
+    
+    // Require DOTENV and create common PORT var.
+    require('dotenv').config()
+    const PORT = process.env.PORT
+    console.log(PORT)
 
-// Require and initalize express.
-const express = require('express')
-const app = express()
+    // Require and initalize express.
+    const express = require('express')
+    const app = express()
+
+    // Require method-override package.
+    const methodOverride = require('method-override')
 
 // Middleware
 app.set('views', __dirname + '/views')
@@ -13,6 +18,8 @@ app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
+
+app.use(methodOverride('_method'))
 
 
 
